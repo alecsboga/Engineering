@@ -8,7 +8,7 @@ import java.util.List;
 public class ProjectRepositoryMemoryImpl implements ProjectRepository {
 
 
-    public Project load(Integer projectId) throws RepositoryException {
+    public Project load(Integer projectId) {
         for (Project currentProject : AppDataLoader.projects) {
             if (currentProject.getId() == projectId) {
                 return currentProject;
@@ -17,15 +17,16 @@ public class ProjectRepositoryMemoryImpl implements ProjectRepository {
         return null;
     }
 
-    public Collection<Project> getProjects() throws RepositoryException {
+    public Collection<Project> getProjects() {
         return AppDataLoader.projects;
     }
 
-    public void add(Project project) throws RepositoryException {
+    public Project add(Project project) {
         AppDataLoader.projects.add(project);
+        return project;
     }
 
-    public void update(Project project) throws RepositoryException {
+    public void update(Project project) {
         for (Project currentProject : AppDataLoader.projects) {
             if (currentProject.getId() == project.getId()) {
                 currentProject.setUsers(project.getUsers());
@@ -34,7 +35,7 @@ public class ProjectRepositoryMemoryImpl implements ProjectRepository {
         }
     }
 
-    public void delete(Integer projectId) throws RepositoryException {
+    public void delete(Integer projectId) {
         for (Project currentProject : AppDataLoader.projects) {
             if (currentProject.getId() == projectId) {
                 AppDataLoader.projects.remove(currentProject);

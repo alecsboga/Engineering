@@ -1,9 +1,9 @@
 package ro.sdl.service;
 
-import ro.sdl.domain.*;
+import ro.sdl.domain.User;
 
 public interface UserService {
 
-    public Boolean associateUserToProject(Project project, User user);
+    public User create(User user);
 
 }

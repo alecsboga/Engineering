@@ -1,21 +1,22 @@
 package ro.sdl.repository;
 
-import ro.sdl.domain.*;
-
 import java.util.Collection;
 import java.util.List;
 
+import ro.sdl.domain.Project;
+import ro.sdl.domain.User;
+
 public interface ProjectRepository {
 
-    Project load(Integer projectId) throws RepositoryException;
+	Project load(Integer projectId);
 
-    Collection<Project> getProjects() throws RepositoryException;
+	Collection<Project> getProjects();
 
-    void add(Project project) throws RepositoryException;
+	Project add(Project project);
 
-    void update(Project project) throws RepositoryException;
+	void update(Project project);
 
-    void delete(Integer projectId) throws RepositoryException;
+	void delete(Integer projectId);
 
-    public List<User> getProjectUsers(Project project);
+	public List<User> getProjectUsers(Project project);
 }

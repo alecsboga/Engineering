@@ -1,11 +1,23 @@
 package ro.sdl.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    
     private String name;
     private Role role;     // dev, qa
     private State state;  // jr, mid , senior
+    
+    @OneToOne
     private Project project;
 
     public User(Integer id, String name, Role role, State state) {

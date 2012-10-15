@@ -1,12 +1,11 @@
 package ro.sdl.service;
 
+import java.util.List;
+
 import ro.sdl.domain.Project;
 import ro.sdl.domain.User;
 import ro.sdl.dto.ProjectDetailedDistributionDTO;
 import ro.sdl.dto.ProjectDistributionDTO;
-import ro.sdl.repository.RepositoryException;
-
-import java.util.List;
 
 public interface ProjectService {
 
@@ -16,11 +15,13 @@ public interface ProjectService {
 
     public ProjectDetailedDistributionDTO getProjectDetailedDistribution(Project project);
 
-    public ProjectDetailedDistributionDTO getProjectDetailedDistribution() throws RepositoryException;
+    public ProjectDetailedDistributionDTO getProjectDetailedDistribution();
 
-    public List<Project> listProjectWithRole(int value) throws RepositoryException;
+    public List<Project> listProjectWithRole(int value);
 
     public List<Project> listProjectWithState(int value);
 
     public List<User> getProjectComposition(Project project);
+    
+    public Project create(Project project);
 }

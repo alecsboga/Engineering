@@ -1,13 +1,12 @@
 package ro.sdl.application.data;
 
 
-import ro.sdl.domain.Project;
-import ro.sdl.domain.Role;
-import ro.sdl.domain.State;
-import ro.sdl.domain.User;
-import ro.sdl.repository.ProjectRepository;
-import ro.sdl.repository.ProjectRepositoryMemoryImpl;
-import ro.sdl.repository.RepositoryException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -16,12 +15,13 @@ import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+
+import ro.sdl.domain.Project;
+import ro.sdl.domain.Role;
+import ro.sdl.domain.State;
+import ro.sdl.domain.User;
+import ro.sdl.repository.ProjectRepository;
+import ro.sdl.repository.ProjectRepositoryMemoryImpl;
 
 
 public class AppDataLoader {
@@ -165,8 +165,6 @@ public class AppDataLoader {
                     }
                 }
             }
-        } catch (RepositoryException e1) {
-            e1.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (XMLStreamException e) {

@@ -1,23 +1,24 @@
 package ro.sdl.service;
 
-import ro.sdl.domain.Project;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import ro.sdl.domain.User;
 import ro.sdl.repository.ProjectRepository;
-import ro.sdl.repository.ProjectRepositoryMemoryImpl;
 import ro.sdl.repository.UserRepository;
-import ro.sdl.repository.UserRepositoryMemoryImpl;
 
+@Service
 public class UserServiceImpl implements UserService {
-    ProjectRepository projectRepository = new ProjectRepositoryMemoryImpl();
-    UserRepository userRepository = new UserRepositoryMemoryImpl();
+	@Autowired
+	ProjectRepository projectRepository;
+	@Autowired
+	UserRepository userRepository;
 
 
-    public Boolean associateUserToProject(Project project, User user) {
-        if (!projectRepository.getProjectUsers(project).contains(user)) {
-            project.getUsers().add(user);
-            user.setProject(project);
-            return true;
-        } else
-            return false;
-    }
+	public User create(User user) {
+		System.out.println("creating user in service");
+		return null;
+	}
+	
+	
 }

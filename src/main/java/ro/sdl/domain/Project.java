@@ -4,13 +4,27 @@ package ro.sdl.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Project {
 
     public Project() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    
     private String description;
+    
+    @OneToMany(mappedBy="project")
+//    @JoinColumn(name="id")
     private List<User> users = new ArrayList<User>();
 
     public Integer getId() {
